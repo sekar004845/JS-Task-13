@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+	<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title> Task-13</title>
+	</head>
+	<body>
+	<h1>Weight calculation in BMI</h1>
+	<form>
+	<label for="height">height:</label>
+	<input id="height" type="text">
+	<label for="weight">weight:</label>
+	<input id="weight" type="text">
+	<button>calculate</button>
+	<div id="result"></div>
+	</form>
+	 <script>
+	 let form=document.querySelector("form");
+     form.addEventListener('submit',function(e){
+	e.preventDefault();
+	let height=parseInt(document.querySelector("#height").value);
+	let weight=parseInt(document.querySelector("#weight").value);
+	let result=document.querySelector("#result");
+	if((height==='') || (height<0) || (isNaN(height))){
+		result.innerHTML="ender the correct height";
+		result.style.color="red"
+	}
+	else if((weight==='') || (weight<0) || (isNaN(weight))){
+		result.innerHTML="ender the correct weight";
+		result.style.color="pink"
+	}
+	else{
+		let bmi=Math.round((weight)/((height**2)/10000));
+		if(1<=bmi && 18>=bmi){
+			result.innerHTML=`<p>Your BMI is:${bmi},you are the UNDER weight</p>`;
+			result.style.color="blue"
+		}
+		if(18<bmi && 24>=bmi){
+			result.innerHTML=`<p>Your BMI is:${bmi},you are the NORMAL weight</p>`;
+			result.style.color="green"
+		}
+		if(25<=bmi && bmi==bmi){
+			result.innerHTML=`<p>Your BMI is:${bmi},you are the OVER weight</p>`;
+			result.style.color="red"
+		}
+	}
+    }); 
+
+     </script>
